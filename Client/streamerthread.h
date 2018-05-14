@@ -12,6 +12,7 @@ class StreamerThread : public QThread
 public:
     StreamerThread(QObject *parent);
     void run();
+    QTcpSocket *socket;
 
 private:
     QByteArray m_baImage; // Variable contenant l'image reçue.
