@@ -72,11 +72,14 @@ void MainWindow::Display(int index)
     if (index > 0 && index <= 1253)
     {
         QPixmap img = QPixmap("/home/administrateur/Bureau/VPlayer/img/sintel_trailer_" + noImg + ".jpg");
+        // Sending image to client into a byte array
         ui->lblVideo->setPixmap(QPixmap(img).scaled(QSize(1280,720), Qt::KeepAspectRatio));
         QByteArray bImage;
         QBuffer bBuffer(&bImage);
+        // Putting every image in the buffer
         bBuffer.open(QIODevice::ReadWrite);
         img.save(&bBuffer, "jpg");
+        // Sending to TCPServer function to display the image
         server->is_newImg(bImage);
 
     }
