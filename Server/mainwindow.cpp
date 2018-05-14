@@ -30,6 +30,12 @@ MainWindow::MainWindow(QWidget *parent) :
     clock = new QLabel();
     clock->setText("0 / 0");
     ui->sbTimer->addWidget(clock);
+
+    // Adding TCP Server ressources
+    server = new TCPServer();
+    // Server-client
+    connect(server, SIGNAL(Connect()), this, SLOT(on_clientConnection()));
+    connect(server, SIGNAL(Disconnect()), this, SLOT(on_clientDisconnection()));
 }
 #pragma endregion AppBuilder;
 
@@ -65,7 +71,14 @@ void MainWindow::Display(int index)
     // Condition to put img on the label if the index is in file range
     if (index > 0 && index <= 1253)
     {
-        ui->lblVideo->setPixmap(QPixmap("/home/administrateur/Bureau/VPlayer/img/sintel_trailer_" + noImg + ".jpg").scaled(QSize(1280,720), Qt::KeepAspectRatio));
+        QPixmap img = QPixmap("/home/administrateur/Bureau/VPlayer/img/sintel_trailer_" + noImg + ".jpg");
+        ui->lblVideo->setPixmap(QPixmap(img).scaled(QSize(1280,720), Qt::KeepAspectRatio));
+        QByteArray bImage;
+        QBuffer bBuffer(&bImage);
+        bBuffer.open(QIODevice::ReadWrite);
+        img.save(&bBuffer, "jpg");
+        server->is_newImg(bImage);
+
     }
     else
     {
@@ -174,6 +187,17 @@ QString MainWindow::convertIndex(int index)
                 return "0" + QString::number(index);
             else
                 return QString::number(index);
+}
+
+// Display client count when connecting
+void MainWindow::on_clientConnection()
+{
+    ui->lblClientCount->setText(QString::number(ui->lblClientCount->text().toInt()+1));
+}
+// Display client count when disconnecting
+void MainWindow::on_clientDisconnection()
+{
+    ui->lblClientCount->setText(QString::number(ui->lblClientCount->text().toInt() -1));
 }
 
 #pragma endregion Events

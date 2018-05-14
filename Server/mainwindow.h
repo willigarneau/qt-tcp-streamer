@@ -17,6 +17,12 @@
 #include <QLabel>
 // Added library to convert TCP Server
 #include <QTcpServer>
+// Using tcpserver.h
+#include "tcpserver.h"
+// Added library to show what is my IP
+#include <QHostAddress>
+// Added library to get a buffer
+#include <QBuffer>
 
 namespace Ui {
 class MainWindow;
@@ -52,6 +58,9 @@ private slots:
 
     void on_spnVitesse_valueChanged(int arg1);
 
+    void on_clientConnection();
+    void on_clientDisconnection();
+
     QString convertIndex(int index);
 
 private:
@@ -64,6 +73,7 @@ private:
     int _speed = 1;
     bool _isPlaying = false;
     int _imgIndex = 0;
+    TCPServer *server;
 };
 
 #endif // MAINWINDOW_H

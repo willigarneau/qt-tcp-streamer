@@ -158,6 +158,69 @@
      <string>Mettre en plein écran</string>
     </property>
    </widget>
+   <widget class="QLabel" name="lblConnected">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>750</y>
+      <width>261</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="text">
+     <string>Nombre de clients connectés :</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblClientCount">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>750</y>
+      <width>161</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblIP">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>770</y>
+      <width>261</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="text">
+     <string>127.0.0.1</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
