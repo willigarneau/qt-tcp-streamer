@@ -6,3 +6,4 @@ Par William Garneau
 Présentation visuelle du Client :
 
 Présentation visuelle du Serveur :
+![image](https://user-images.githubusercontent.com/33030290/39974625-036bedba-56f8-11e8-9a68-1af86c60cae3.png)
